@@ -19,7 +19,7 @@ class Viewer
   end
 
   def create_rating(score, movie)
-    movie.is_a?(Movie) ? Rating.new(score, self, movie) : Rating.new(score, self, Movie.new(movie))
+    movie.is_a?(Movie) ? Rating.new(score, self, movie) : Rating.new(score, self, Movie.find_or_create_by_title(movie))
   end
 
 end

@@ -13,6 +13,11 @@ class Movie
     self.all.find {|movie| movie.title == title}
   end
 
+
+  def self.find_or_create_by_title(title)
+    self.find_by_title(title.to_s) || self.new(title.to_s)
+  end
+
   def ratings
     Rating.all.select {|rating| rating.movie == self}
   end
